@@ -18,6 +18,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
+<!-- Meta Pixel: John Tesh 2021 ad account -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1366422343752638');
+  fbq('track', 'PageView', {
+    content_category: 'Lead Magnet',
+    content_name: 'Six Scriptures PDF'
+  });
+</script>
+
 <style>
   :root {
     --paper: #f7f1e6;
@@ -552,6 +569,9 @@
 </style>
 </head>
 <body>
+<noscript>
+  <img alt="" height="1" src="https://www.facebook.com/tr?id=1366422343752638&amp;ev=PageView&amp;noscript=1" style="display:none" width="1">
+</noscript>
 
 <header>
   <div class="brand">John Tesh <span class="brand-mark">✦</span> A Deeper Faith</div>
@@ -679,6 +699,15 @@
     /^\d+$/.test(kitConfig.formId) &&
     kitConfig.uid.length > 0;
 
+  function trackSixScripturesLead() {
+    if (typeof window.fbq !== 'function') return;
+
+    window.fbq('track', 'Lead', {
+      content_category: 'Lead Magnet',
+      content_name: 'Six Scriptures PDF'
+    });
+  }
+
   document.querySelectorAll('[data-kit-form]').forEach((form) => {
     const status = form.querySelector('[data-form-status]');
 
@@ -697,6 +726,8 @@
       }, true);
 
       form.addEventListener('submit', () => {
+        trackSixScripturesLead();
+
         if (!status) return;
 
         const emailInput = form.querySelector('input[type="email"]');

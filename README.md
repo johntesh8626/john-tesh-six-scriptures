@@ -4,6 +4,7 @@ Static Netlify landing page for John Tesh's Six Scriptures PDF lead magnet.
 
 - Live URL: https://john-tesh-six-scriptures.netlify.app
 - Kit form ID: `9408026`
+- Meta pixel ID: `1366422343752638`
 - Lead magnet PDF is delivered through Kit's incentive email.
 
 Deploy from this folder with:
