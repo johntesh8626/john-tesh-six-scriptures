@@ -699,7 +699,15 @@
     /^\d+$/.test(kitConfig.formId) &&
     kitConfig.uid.length > 0;
 
-  function trackSixScripturesLead() {
+  const trackedLeadEmails = new Set();
+
+  function trackSixScripturesLead(emailAddress) {
+    const normalizedEmail = (emailAddress || '').trim().toLowerCase();
+    const dedupeKey = normalizedEmail || `lead-${trackedLeadEmails.size + 1}`;
+
+    if (trackedLeadEmails.has(dedupeKey)) return;
+    trackedLeadEmails.add(dedupeKey);
+
     if (typeof window.fbq !== 'function') return;
 
     window.fbq('track', 'Lead', {
@@ -726,23 +734,40 @@
       }, true);
 
       form.addEventListener('submit', () => {
-        trackSixScripturesLead();
+        if (!status) return;
+
+        const button = form.querySelector('button[type="submit"]');
+
+        form.classList.add('is-submitting');
+        status.hidden = false;
+        status.classList.remove('is-error');
+        status.textContent = 'Sending your Six Scriptures PDF...';
+
+        if (button) {
+          button.dataset.defaultText = button.dataset.defaultText || button.textContent;
+          button.textContent = 'Sending...';
+        }
+      });
+
+      form.addEventListener('ckjs:submission:complete', (event) => {
+        if (event.detail && event.detail.uid !== kitConfig.uid) return;
+
+        trackSixScripturesLead(event.detail && event.detail.email_address);
 
         if (!status) return;
 
         const emailInput = form.querySelector('input[type="email"]');
         const button = form.querySelector('button[type="submit"]');
 
+        form.classList.remove('is-submitting');
         form.classList.add('is-submitted');
         status.hidden = false;
         status.classList.remove('is-error');
         status.textContent = "You're all set. Check your inbox for the Six Scriptures PDF from me. Here we go! JT.";
 
         if (emailInput) {
-          window.setTimeout(() => {
-            emailInput.value = '';
-            emailInput.placeholder = 'Sent. Check your inbox.';
-          }, 250);
+          emailInput.value = '';
+          emailInput.placeholder = 'Sent. Check your inbox.';
         }
 
         if (button) {
