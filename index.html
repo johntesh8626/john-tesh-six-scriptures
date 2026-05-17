@@ -287,6 +287,20 @@
     color: #8a2d20;
   }
 
+  .form-errors {
+    color: #8a2d20;
+    font-size: 14px;
+    line-height: 1.5;
+    list-style: none;
+    margin-top: 12px;
+  }
+
+  .formkit-alert-success {
+    color: var(--brass);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
   .form-card.is-submitted input[type="email"] {
     opacity: 0.72;
   }
@@ -586,11 +600,14 @@
     <p class="lede">A few years ago, the doctors gave me eighteen months. I'm still here. These six scriptures are part of the reason why.</p>
 
     <form class="form-card formkit-form" action="https://app.kit.com/forms/9408026/subscriptions" method="post" data-kit-form data-sv-form="9408026" data-uid="0fe698db92" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;You're all set. Check your inbox for the Six Scriptures PDF from me. Here we go! JT.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;powered_by&quot;:{&quot;show&quot;:false},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;}}}">
-      <label for="email">Tell me where to send it</label>
-      <input id="email" type="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
-      <button type="submit" data-element="submit">Send Me the Six Scriptures</button>
-      <p class="fineprint">Free. No catch. I'll also send you occasional notes — short, useful, never pushy. Unsubscribe anytime.</p>
-      <p class="form-status" data-form-status hidden></p>
+      <div data-element="fields">
+        <label for="email">Tell me where to send it</label>
+        <input id="email" type="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit" data-element="submit">Send Me the Six Scriptures</button>
+        <p class="fineprint">Free. No catch. I'll also send you occasional notes — short, useful, never pushy. Unsubscribe anytime.</p>
+        <ul class="form-errors" data-element="errors" role="alert" aria-live="polite"></ul>
+        <p class="form-status" data-form-status hidden></p>
+      </div>
     </form>
   </div>
 
@@ -670,11 +687,14 @@
   <p>Drop your email below and the PDF lands in your inbox in the next minute or two.</p>
 
   <form class="form-card formkit-form" action="https://app.kit.com/forms/9408026/subscriptions" method="post" data-kit-form data-sv-form="9408026" data-uid="0fe698db92" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;You're all set. Check your inbox for the Six Scriptures PDF from me. Here we go! JT.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;powered_by&quot;:{&quot;show&quot;:false},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;}}}">
-    <label for="email2">Your email</label>
-    <input id="email2" type="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
-    <button type="submit" data-element="submit">Send Me the Six Scriptures</button>
-    <p class="fineprint">No charge. No catch. Unsubscribe anytime.</p>
-    <p class="form-status" data-form-status hidden></p>
+    <div data-element="fields">
+      <label for="email2">Your email</label>
+      <input id="email2" type="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
+      <button type="submit" data-element="submit">Send Me the Six Scriptures</button>
+      <p class="fineprint">No charge. No catch. Unsubscribe anytime.</p>
+      <ul class="form-errors" data-element="errors" role="alert" aria-live="polite"></ul>
+      <p class="form-status" data-form-status hidden></p>
+    </div>
   </form>
 </section>
 
